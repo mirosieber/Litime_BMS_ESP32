@@ -1,7 +1,6 @@
 #include <BMSClient.h>
 
-// BMS MAC-Adresse ersetzen
-BMSClient bmsClient("C8:47:80:18:E1:15");
+BMSClient bmsClient;  // Keine MAC-Adresse im Konstruktor
 
 void printCellVoltages(const std::vector<float>& cells) {
     Serial.println("Cell Voltages:");
@@ -13,6 +12,8 @@ void printCellVoltages(const std::vector<float>& cells) {
 void setup() {
     Serial.begin(115200);
     Serial.println("BMS Client Example");
+    
+    bmsClient.init("C8:47:80:18:E1:15");  // MAC-Adresse über init()
     
     if(bmsClient.connect()) {
         Serial.println("Connected to BMS!");
