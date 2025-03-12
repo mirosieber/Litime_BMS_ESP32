@@ -1,0 +1,31 @@
+#######################################
+# Syntax Coloring Map
+#######################################
+
+BMSClient	KEYWORD1
+BMSData	KEYWORD1
+
+getTotalVoltage	KEYWORD2
+getCellVoltageSum	KEYWORD2
+getCurrent	KEYWORD2
+getMosfetTemp	KEYWORD2
+getCellTemp	KEYWORD2
+getSOC	KEYWORD2
+getSOH	KEYWORD2
+getRemainingAh	KEYWORD2
+getFullCapacityAh	KEYWORD2
+getProtectionState	KEYWORD2
+getHeatState	KEYWORD2
+getBalanceMemory	KEYWORD2
+getFailureState	KEYWORD2
+getBalancingState	KEYWORD2
+getBatteryState	KEYWORD2
+getDischargesCount	KEYWORD2
+getDischargesAhCount	KEYWORD2
+getCellVoltages	KEYWORD2
+getData	KEYWORD2
+
+connect	KEYWORD2
+disconnect	KEYWORD2
+isConnected	KEYWORD2
+update	KEYWORD2
