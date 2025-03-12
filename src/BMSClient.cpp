@@ -1,36 +1,30 @@
 #include "BMSClient.h"
 
-// Statische UUIDs initialisieren
 BLEUUID BMSClient::serviceUUID("0000ffe0-0000-1000-8000-00805f9b34fb");
 BLEUUID BMSClient::writeUUID("0000ffe2-0000-1000-8000-00805f9b34fb");
 BLEUUID BMSClient::notifyUUID("0000ffe1-0000-1000-8000-00805f9b34fb");
-
-// Query-Command
 static uint8_t queryCommand[] = {0x00, 0x00, 0x04, 0x01, 0x13, 0x55, 0xAA, 0x17};
 
-BMSClient::BMSClient(const char* deviceAddress) : 
-    deviceAddress(BLEAddress(deviceAddress)),
+BMSClient::BMSClient() : 
     pClient(nullptr),
     connected(false),
-    lastQuery(0) {
-    BLEDevice::init("ESP32-BMS-Client");
-}
+    lastQuery(0) {}
 
 BMSClient::~BMSClient() {
     disconnect();
 }
 
-void BMSClient::MyClientCallback::onConnect(BLEClient* pclient) {
-    owner.connected = true;
-}
-
-void BMSClient::MyClientCallback::onDisconnect(BLEClient* pclient) {
-    owner.connected = false;
-    BLEDevice::deinit(true);
+void BMSClient::init(const char* deviceAddress) {
+    this->deviceAddress = BLEAddress(deviceAddress);
 }
 
 bool BMSClient::connect() {
     if(connected) return true;
+    if(deviceAddress.toString().empty()) return false;
+
+    if(!BLEDevice::getInitialized()) {
+        BLEDevice::init("ESP32-BMS-Client");
+    }
     
     pClient = BLEDevice::createClient();
     pClient->setClientCallbacks(new MyClientCallback(*this));
@@ -86,7 +80,6 @@ void BMSClient::update() {
 void BMSClient::parseNotificationData(uint8_t* pData, size_t length) {
     if(length < 104) return;
 
-    // Parsing der Rohdaten
     currentData.totalVoltage = (uint32_t(pData[11]) << 24 | pData[10] << 16 | pData[9] << 8 | pData[8]) / 1000.0f;
     currentData.cellVoltageSum = (uint32_t(pData[15]) << 24 | pData[14] << 16 | pData[13] << 8 | pData[12]) / 1000.0f;
     currentData.current = (int32_t(pData[51] << 24 | pData[50] << 16 | pData[49] << 8 | pData[48])) / 1000.0f;
@@ -105,7 +98,6 @@ void BMSClient::parseNotificationData(uint8_t* pData, size_t length) {
     currentData.dischargesCount = (uint32_t(pData[99]) << 24 | pData[98] << 16 | pData[97] << 8 | pData[96]);
     currentData.dischargesAhCount = (uint32_t(pData[103]) << 24 | pData[102] << 16 | pData[101] << 8 | pData[100]) / 1000.0f;
 
-    // Zellspannungen parsen
     currentData.cellVoltages.clear();
     for(int i = 16; i < 48; i += 2) {
         if(pData[i] == 0 && pData[i+1] == 0) continue;
@@ -139,7 +131,7 @@ String BMSClient::bytesToBinaryString(uint8_t* data, int start, int length) cons
     return result;
 }
 
-// Getter-Implementierungen
+// Getter Implementierungen
 float BMSClient::getTotalVoltage() const { return currentData.totalVoltage; }
 float BMSClient::getCellVoltageSum() const { return currentData.cellVoltageSum; }
 float BMSClient::getCurrent() const { return currentData.current; }
@@ -159,3 +151,13 @@ uint32_t BMSClient::getDischargesCount() const { return currentData.dischargesCo
 float BMSClient::getDischargesAhCount() const { return currentData.dischargesAhCount; }
 std::vector<float> BMSClient::getCellVoltages() const { return currentData.cellVoltages; }
 const BMSClient::BMSData& BMSClient::getData() const { return currentData; }
+
+// Client Callback Implementierungen
+void BMSClient::MyClientCallback::onConnect(BLEClient* pclient) {
+    owner.connected = true;
+}
+
+void BMSClient::MyClientCallback::onDisconnect(BLEClient* pclient) {
+    owner.connected = false;
+    BLEDevice::deinit(true);
+}
