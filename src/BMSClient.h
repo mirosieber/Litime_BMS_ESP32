@@ -30,9 +30,10 @@ public:
         std::vector<float> cellVoltages;
     };
 
-    BMSClient(const char* deviceAddress);
+    BMSClient();
     ~BMSClient();
 
+    void init(const char* deviceAddress);
     bool connect();
     void disconnect();
     bool isConnected();
