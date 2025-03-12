@@ -34,10 +34,11 @@ Eine Arduino/ESP32-Bibliothek zur Kommunikation mit Batteriemanagementsystemen (
 #include <BMSClient.h>
 
 // BMS MAC-Adresse
-BMSClient bmsClient("C8:47:80:18:E1:15");
+BMSClient bmsClient;
 
 void setup() {
     Serial.begin(115200);
+    bmsClient.init("C8:47:80:18:E1:15");
     if(bmsClient.connect()) {
         Serial.println("Connected to BMS!");
     }
