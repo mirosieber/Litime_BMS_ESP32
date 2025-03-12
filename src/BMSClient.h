@@ -5,6 +5,7 @@
 #include <BLEUtils.h>
 #include <BLEClient.h>
 #include <vector>
+#include <Arduino.h>
 
 class BMSClient {
 public:
@@ -40,10 +41,23 @@ public:
 
     // Getter methods
     float getTotalVoltage() const;
+    float getCellVoltageSum() const;
     float getCurrent() const;
+    int16_t getMosfetTemp() const;
+    int16_t getCellTemp() const;
     uint8_t getSOC() const;
     String getSOH() const;
-    // ... (Alle Getter hier deklarieren)
+    float getRemainingAh() const;
+    float getFullCapacityAh() const;
+    String getProtectionState() const;
+    String getHeatState() const;
+    String getBalanceMemory() const;
+    String getFailureState() const;
+    String getBalancingState() const;
+    String getBatteryState() const;
+    uint32_t getDischargesCount() const;
+    float getDischargesAhCount() const;
+    std::vector<float> getCellVoltages() const;
 
 private:
     static BLEUUID serviceUUID;
@@ -56,9 +70,10 @@ private:
     BLERemoteCharacteristic* pNotifyCharacteristic;
     BMSData currentData;
     bool connected;
+    unsigned long lastQuery;
 
     void parseNotificationData(uint8_t* pData, size_t length);
-    String bytesToHexString(uint8_t* data, int start, int length, bool reverse) const;
+    String bytesToHexString(uint8_t* data, int start, int length, bool reverse = true) const;
     String bytesToBinaryString(uint8_t* data, int start, int length) const;
 
     class MyClientCallback : public BLEClientCallbacks {
