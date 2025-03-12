@@ -30,17 +30,17 @@ public:
         std::vector<float> cellVoltages;
     };
 
-    BMSClient();
+    BMSClient();  // Parameterloser Konstruktor
     ~BMSClient();
 
-    void init(const char* deviceAddress);
+    void init(const char* deviceAddress);  // Init-Methode für Adresse
     bool connect();
     void disconnect();
     bool isConnected();
     void update();
     const BMSData& getData() const;
 
-    // Getter methods
+    // Getter
     float getTotalVoltage() const;
     float getCellVoltageSum() const;
     float getCurrent() const;
@@ -65,7 +65,7 @@ private:
     static BLEUUID writeUUID;
     static BLEUUID notifyUUID;
     
-    BLEAddress deviceAddress;
+    BLEAddress deviceAddress;     // Initialisiert mit leerem BLEAddress
     BLEClient* pClient;
     BLERemoteCharacteristic* pWriteCharacteristic;
     BLERemoteCharacteristic* pNotifyCharacteristic;
@@ -77,13 +77,14 @@ private:
     String bytesToHexString(uint8_t* data, int start, int length, bool reverse = true) const;
     String bytesToBinaryString(uint8_t* data, int start, int length) const;
 
+    // Innerer Callback-Handler
     class MyClientCallback : public BLEClientCallbacks {
     public:
         MyClientCallback(BMSClient& owner) : owner(owner) {}
         void onConnect(BLEClient* pclient);
         void onDisconnect(BLEClient* pclient);
     private:
-        BMSClient& owner;
+        BMSClient& owner;  // Referenz auf übergeordnetes Objekt
     };
 };
 
