@@ -1,8 +1,11 @@
-# BMS Client Library
+# Litime BMS Client Library
+
+Inspiriert an:
+https://github.com/calledit/LiTime_BMS_bluetooth
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Eine Arduino-Bibliothek zur Kommunikation mit Batteriemanagementsystemen (BMS) über Bluetooth Low Energy (BLE). Diese Bibliothek ermöglicht den Zugriff auf wichtige Batteriedaten wie Spannung, Strom, Temperatur, Ladezustand (SOC) und vieles mehr.
+Eine Arduino-Bibliothek zur Kommunikation mit Batteriemanagementsystemen (BMS) der firma Litime über Bluetooth Low Energy (BLE). Diese Bibliothek ermöglicht den Zugriff auf wichtige Batteriedaten wie Spannung, Strom, Temperatur, Ladezustand (SOC) und vieles mehr.
 
 ## Features
 
