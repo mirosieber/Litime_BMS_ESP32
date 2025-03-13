@@ -8,13 +8,14 @@ https://github.com/calledit/LiTime_BMS_bluetooth
 
 Eine Arduino/ESP32-Bibliothek zur Kommunikation mit Batteriemanagementsystemen (BMS) der firma Litime über Bluetooth Low Energy (BLE). Diese Bibliothek ermöglicht den Zugriff auf wichtige Batteriedaten wie Spannung, Strom, Temperatur, Ladezustand (SOC) und vieles mehr.
 
+getestet an Litime 24V 50Ah mit ESP32 S3
+
 ## Features
 
 - **Einfache Integration**: Einfache API für den Zugriff auf BMS-Daten
 - **Umfangreiche Daten**: Zugriff auf über 20 verschiedene Batterieparameter
 - **Automatische Verbindungsverwaltung**: Automatisches Reconnect bei Verbindungsabbruch
 - **Echtzeitdaten**: Regelmäßige Aktualisierung der Batteriedaten
-- **Plattformunabhängig**: Kompatibel mit allen ESP32-Boards
 - **Detaillierte Zellinformationen**: Einzelne Zellspannungen und Balancierungsstatus
 
 ## Installation
