@@ -3,7 +3,6 @@
 Inspiriert an:
 https://github.com/calledit/LiTime_BMS_bluetooth
 
-# Work in progress! not functional!
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
