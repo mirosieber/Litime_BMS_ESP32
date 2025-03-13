@@ -21,8 +21,7 @@ void BMSClient::init(const char* deviceAddress) {
 
 bool BMSClient::connect() {
     if(connected) return true;
-    // Korrektur 2: empty() → isEmpty()
-    if(deviceAddress.toString().empty()) return false;
+    if(deviceAddress.toString().length() == 0) return false;
 
     if(!BLEDevice::getInitialized()) {
         BLEDevice::init("ESP32-BMS-Client");
