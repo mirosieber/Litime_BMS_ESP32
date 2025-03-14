@@ -1,4 +1,4 @@
-# ESP32 Litime BMS Bluetooth Library
+# Litime BMS Bluetooth ESP32 Library
 
 This repository contains an ESP32 library for communication with **Litime Battery Management Systems (BMS)** via **Bluetooth Low Energy (BLE)**. The library provides a simple interface to access essential battery data such as **voltage**, **current**, **temperature**, **state of charge (SOC)**, and more. 
 
