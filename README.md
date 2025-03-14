@@ -1,26 +1,25 @@
-# ESP32 Litime BMS bluetooth Library
+# ESP32 Litime BMS Bluetooth Library
 
-Inspired by:  
-https://github.com/calledit/LiTime_BMS_bluetooth
+This repository contains an ESP32 library for communication with **Litime Battery Management Systems (BMS)** via **Bluetooth Low Energy (BLE)**. The library provides a simple interface to access essential battery data such as **voltage**, **current**, **temperature**, **state of charge (SOC)**, and more. 
 
-An ESP32 library for communication with Litime Battery Management Systems (BMS) via Bluetooth Low Energy (BLE). This library allows access to important battery data such as voltage, current, temperature, state of charge (SOC), and much more.
-
-Tested with Litime 24V 50Ah and ESP32 S3.
+The library is designed to work with the **Litime BMS** and has been tested with the **Litime 24V 50Ah** model and **ESP32 S3**.
 
 ## Features
 
-- **Easy Integration**: Simple API to access BMS data
-- **Extensive Data**: Access to all available battery parameters
-- **Automatic Connection Management**: Automatic reconnect in case of connection loss
-- **Real-Time Data**: Regular updates of battery data
+- **Easy Integration**: A simple API for accessing BMS data with minimal setup.
+- **Extensive Data**: Provides access to all available battery parameters.
+- **Automatic Connection Management**: Automatically reconnects if the connection to the BMS is lost.
+- **Real-Time Data**: Provides regular updates on the battery’s status.
 
 ## Installation
 
-1. Download the latest version of the library as a ZIP file
-2. Open the Arduino IDE
-3. Go to `Sketch` -> `Include Library` -> `Add .ZIP Library...`
-4. Select the downloaded ZIP file
-5. The library is now installed and can be used
+To install the library:
+
+1. Download the latest version of the library as a ZIP file.
+2. Open the **Arduino IDE**.
+3. Go to **Sketch** -> **Include Library** -> **Add .ZIP Library...**.
+4. Select the downloaded ZIP file.
+5. The library is now installed and ready for use.
 
 ## Usage
 
