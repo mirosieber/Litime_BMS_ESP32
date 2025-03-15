@@ -2,7 +2,7 @@
 
 This repository contains an ESP32 library for communication with **Litime Battery Management Systems (BMS)** via **Bluetooth Low Energy (BLE)**. The library provides a simple interface to access essential battery data such as **voltage**, **current**, **temperature**, **state of charge (SOC)**, and more.
 
- Inspired by https://github.com/calledit/LiTime_BMS_bluetooth
+ **Inspired by:** https://github.com/calledit/LiTime_BMS_bluetooth
 
 The library is designed to work with the **Litime BMS** and has been tested with the **Litime 24V 50Ah** model and **ESP32 S3**.
 
@@ -17,7 +17,7 @@ The library is designed to work with the **Litime BMS** and has been tested with
 
 To install the library:
 
-Download via Arduino library manager (BMS Client)
+Download via Arduino library manager (BMS Client) or install manually:
 
 1. Download the latest version of the library as a ZIP file.
 2. Open the **Arduino IDE**.
