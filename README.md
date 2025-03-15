@@ -17,6 +17,8 @@ The library is designed to work with the **Litime BMS** and has been tested with
 
 To install the library:
 
+Download via Arduino library manager (BMS Client)
+
 1. Download the latest version of the library as a ZIP file.
 2. Open the **Arduino IDE**.
 3. Go to **Sketch** -> **Include Library** -> **Add .ZIP Library...**.
