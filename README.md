@@ -4,7 +4,10 @@ This repository contains an ESP32 library for communication with **Litime Batter
 
  **Inspired by:** https://github.com/calledit/LiTime_BMS_bluetooth
 
-The library is designed to work with the **Litime BMS** and has been tested with the **Litime 24V 50Ah** model and **ESP32 S3**.
+The library is designed to work with the **Litime BMS** and has been tested with the **Litime 24V 50Ah** model and **ESP32_S3**.
+
+Although this library is primarily designed for Litime BMS devices, users have reported successful communication with **PowerQueen** and **Redodo** batteries.
+These devices appear to use the same BLE characteristics and command structure.
 
 ## Features
 
@@ -52,3 +55,4 @@ void loop() {
     }
     delay(1000);
 }
+
